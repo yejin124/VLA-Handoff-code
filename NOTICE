@@ -8,9 +8,35 @@ its authors retain copyright. No IEEE template or journal manuscript is included
 assets/occluder contains ten fixed LIBERO simulator frames used as input
 textures for the occluder perturbation. These are experimental inputs, not
 experimental performance results. LIBERO and its third-party visual assets
-retain their original notices and licenses. See docs/THIRD_PARTY.md.
+retain their original notices and licenses. The LIBERO notice follows below.
 
 GR00T, MolmoAct2, OpenPI, SmolVLA, tau-0-VLA, LIBERO, and SimplerEnv are
 external dependencies under their respective upstream licenses. Checkpoints,
 training datasets, simulator assets other than the fixed textures, raw episode
 records, and numerical experimental results are not distributed in this package.
+
+LIBERO source: https://github.com/Lifelong-Robot-Learning/LIBERO
+LIBERO incorporates third-party simulator and visual assets whose rights
+remain with their respective owners. Model weights are separate dependencies.
+
+MIT License
+
+Copyright (c) 2023 Lifelong Robot Learning
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
