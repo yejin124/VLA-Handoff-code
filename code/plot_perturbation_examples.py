@@ -44,11 +44,11 @@ for camera, key in enumerate(['agent_image', 'wrist_image']):
             spine.set_visible(False)
         record['panels'].append({'camera': camera, 'family': family, 'severity': severity,
                                  'seed': seed, 'pixels_sha256': hashlib.sha256(pixels.tobytes()).hexdigest()})
-fig.subplots_adjust(left=.02, right=.98, top=.91, bottom=.015, wspace=.10, hspace=.24)
+fig.subplots_adjust(left=.02, right=.98, top=.885, bottom=.015, wspace=.10, hspace=.24)
 fig.canvas.draw()
 for column, label in enumerate(['Agent view', 'Wrist view']):
     position = axes[0, column].get_position()
-    fig.text(position.x0 + position.width / 2, .977, label,
+    fig.text(position.x0 + position.width / 2, .992, label,
              ha='center', va='top', fontsize=10.5, fontweight='bold')
 for row, label in enumerate(['Clean', 'Occluder (s = 1.0)', 'Dim light (s = 1.25)']):
     position = axes[row, 0].get_position()
