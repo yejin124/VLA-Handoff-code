@@ -1,0 +1,688 @@
+{
+  "spatial_main_gr00t": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "clean,occluder,moved",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "moved": 0.1,
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main/gr00t"
+  },
+  "spatial_main_pi05": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "clean,occluder,moved",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "moved": 0.2,
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main/pi05"
+  },
+  "spatial_main_molmoact": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "clean,occluder,moved",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "moved": 0.15,
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main/molmoact"
+  },
+  "spatial_main2_gr00t": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "lighting",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "lighting": 1.25
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main2/gr00t"
+  },
+  "spatial_main2_pi05": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "lighting",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "lighting": 1.25
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main2/pi05"
+  },
+  "spatial_main2_molmoact": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "lighting",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "lighting": 1.25
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main2/molmoact"
+  },
+  "spatial_main3_gr00t": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "relocated",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "relocated": 0.25
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main3/gr00t"
+  },
+  "spatial_main3_pi05": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "relocated",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "relocated": 0.25
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main3/pi05"
+  },
+  "spatial_main3_molmoact": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "relocated",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "relocated": 0.25
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_main3/molmoact"
+  },
+  "spatial_confirm_gr00t": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 2,
+      "seed": 20261109,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_confirm/gr00t"
+  },
+  "spatial_confirm_pi05": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 2,
+      "seed": 20261111,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_confirm/pi05"
+  },
+  "spatial_corrected_molmoact": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_corrected/molmoact"
+  },
+  "spatial_corrected_smolvla": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "smolvla",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_corrected/smolvla"
+  },
+  "spatial_tau0_tau0": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "tau0",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261009,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_spatial",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/spatial_tau0/tau0"
+  },
+  "object_main_gr00t": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "clean,occluder,moved",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "moved": 0.1,
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main/gr00t"
+  },
+  "object_main_pi05": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "clean,occluder,moved",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "moved": 0.2,
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main/pi05"
+  },
+  "object_main_molmoact": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "clean,occluder,moved",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "moved": 0.15,
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main/molmoact"
+  },
+  "object_main2_gr00t": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "lighting",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "lighting": 1.25
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main2/gr00t"
+  },
+  "object_main2_pi05": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "lighting",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "lighting": 1.25
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main2/pi05"
+  },
+  "object_main2_molmoact": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "lighting",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "lighting": 1.25
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main2/molmoact"
+  },
+  "object_main3_gr00t": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "relocated",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "relocated": 0.25
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main3/gr00t"
+  },
+  "object_main3_pi05": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "relocated",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "relocated": 0.25
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main3/pi05"
+  },
+  "object_main3_molmoact": {
+    "collector": "recorded_failure_rollout_20261103.py",
+    "options": {
+      "apply_to_wrist": false,
+      "conditions": "relocated",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "relocated": 0.25
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_main3/molmoact"
+  },
+  "object_confirm_gr00t": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49",
+      "max_steps": 280,
+      "model": "gr00t",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 2,
+      "seed": 20261110,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_confirm/gr00t"
+  },
+  "object_confirm_pi05": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49",
+      "max_steps": 280,
+      "model": "pi0.5",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 2,
+      "seed": 20261112,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_confirm/pi05"
+  },
+  "object_corrected_molmoact": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "MolmoAct2",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_corrected/molmoact"
+  },
+  "object_corrected_smolvla": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "smolvla",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_corrected/smolvla"
+  },
+  "object_tau0_tau0": {
+    "collector": "icassp_rollout.py",
+    "options": {
+      "apply_to_wrist": true,
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
+      "max_steps": 280,
+      "model": "tau0",
+      "move_duration": 10,
+      "move_step": 30,
+      "onset": 0,
+      "replicates": 1,
+      "seed": 20261010,
+      "severities": {
+        "occluder": 1.0
+      },
+      "severity": 0.0,
+      "suite": "libero_object",
+      "tasks": "0,1,2,3,4,5,6,7,8,9"
+    },
+    "output": "data/icassp2027/realistic/object_tau0/tau0"
+  },
+  "bridge_reused": {
+    "collector": "simpler_rollout.py",
+    "options": {
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "0:23",
+      "fresh_env": true,
+      "landmarks": "10,20",
+      "max_steps": 120,
+      "replay_through": -1,
+      "replicates": 3,
+      "restore_after": -1,
+      "seed": 20261105,
+      "severity": 0.75,
+      "tasks": "0,1,2,3"
+    },
+    "output": "data/simpler/restore/continue"
+  },
+  "bridge_new": {
+    "collector": "simpler_rollout.py",
+    "options": {
+      "conditions": "occluder",
+      "draws": 8,
+      "episodes": "0:23",
+      "fresh_env": true,
+      "landmarks": "10,20",
+      "max_steps": 120,
+      "replay_through": -1,
+      "replicates": 9,
+      "restore_after": -1,
+      "seed": 20261106,
+      "severity": 0.75,
+      "tasks": "0,1,2,3"
+    },
+    "output": "data/simpler/confirm"
+  }
+}

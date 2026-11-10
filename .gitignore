@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+data/
+logs/
+ext/
+weights/
+config/local/
+paper/
+*.egg-info/

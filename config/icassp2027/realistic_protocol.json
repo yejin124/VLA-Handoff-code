@@ -1,0 +1,60 @@
+{
+  "description": "Perturbation settings for the retained collection grid.",
+  "severities_in_force": {
+    "gr00t": {
+      "occluder": "1.0+wrist",
+      "lighting": 1.25,
+      "moved": 0.1,
+      "relocated": 0.25
+    },
+    "molmoact": {
+      "occluder": "1.0+wrist",
+      "lighting": 1.25,
+      "moved": 0.15,
+      "relocated": 0.25
+    },
+    "pi05": {
+      "occluder": "1.0+wrist",
+      "lighting": 1.25,
+      "moved": 0.2,
+      "relocated": 0.25
+    }
+  },
+  "chosen_severities": {
+    "gr00t": {
+      "occluder": "1.0+wrist",
+      "lighting": 1.5,
+      "moved": 0.1
+    },
+    "molmoact": {
+      "occluder": "1.0+wrist",
+      "lighting": 1.4,
+      "moved": 0.15
+    },
+    "pi05": {
+      "occluder": "1.0+wrist",
+      "lighting": 1.4,
+      "moved": 0.2
+    }
+  },
+  "pilot_prevalence_order": {
+    "gr00t": [
+      "lighting",
+      "occluder",
+      "moved",
+      "relocated"
+    ],
+    "molmoact": [
+      "lighting",
+      "occluder",
+      "moved",
+      "relocated"
+    ],
+    "pi05": [
+      "lighting",
+      "occluder",
+      "moved",
+      "relocated"
+    ]
+  }
+}

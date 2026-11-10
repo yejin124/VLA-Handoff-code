@@ -1,0 +1,66 @@
+{
+  "model": "GR00T-N1.7-LIBERO/libero_spatial",
+  "checkpoint_id": "b582c7cd2b30812c6c7e2c7c55f10624fac5a2f634a211479810c2894e7b18bf",
+  "checkpoint_sha256": "b582c7cd2b30812c6c7e2c7c55f10624fac5a2f634a211479810c2894e7b18bf",
+  "python": "3.12.13",
+  "torch": "2.9.0+cu128",
+  "transformers": "4.57.3",
+  "numpy": "1.26.4",
+  "cuda": "12.8",
+  "device": "NVIDIA RTX 6000 Ada Generation",
+  "action_horizon": 8,
+  "num_inference_timesteps": 4,
+  "checkpoint_files": [
+    {
+      "path": "config.json",
+      "size": 2266,
+      "sha256": "ce763f74ad1cda2ca9e67491229cbc5810d83cae675cb4dad839a69a9731fd97"
+    },
+    {
+      "path": "embodiment_id.json",
+      "size": 2145,
+      "sha256": "abc4a749389837416a102d9455a8c089336f2e417afb18565703b9944974bc35"
+    },
+    {
+      "path": "experiment_cfg/conf.yaml",
+      "size": 7657,
+      "sha256": "97830f68aea169a062e2c5191272dca8958f447f9d683e9a0be820471d56b58c"
+    },
+    {
+      "path": "experiment_cfg/config.yaml",
+      "size": 9675,
+      "sha256": "24b279868f341ab9bebf238e88c5c46973672629a2e1f4e91e8ef4e814d627d7"
+    },
+    {
+      "path": "experiment_cfg/dataset_statistics.json",
+      "size": 5291,
+      "sha256": "89b62a35203247571645aacf2016ccce928d9b488042f0856af2ac17f4227b3e"
+    },
+    {
+      "path": "model-00001-of-00002.safetensors",
+      "size": 4990519232,
+      "sha256": "b7c7314a989ae3b577e3265e3f25c42a018ab4a476ab99e4d0fa61266d38a878"
+    },
+    {
+      "path": "model-00002-of-00002.safetensors",
+      "size": 1919980184,
+      "sha256": "ac70555aee124ef20d23473c85dbcfda42dc8d9f859384822e8aef19fd2d45dd"
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "size": 104985,
+      "sha256": "407804ea5a62f4f8823f48811ae0edbb82fac101e9cf4d7273e6e2f692bb4d59"
+    },
+    {
+      "path": "processor_config.json",
+      "size": 26935,
+      "sha256": "545bb44c7d8caaf5ac82df55b90831271a1469a4e48adcc9a5f469f064f4e121"
+    },
+    {
+      "path": "statistics.json",
+      "size": 4298385,
+      "sha256": "853bd068c7a5be4c7657fae634b654de38ea3e64c5e57409cbd3f4b57b6461c2"
+    }
+  ],
+  "replication_source": "gr00t_source.json"
+}

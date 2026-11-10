@@ -1,0 +1,33 @@
+{
+  "model": "SmolVLA-LIBERO",
+  "checkpoint_id": "sha256:d4f4987b59277b4a1512d49a398faa08adca59a89dffdbddf8f4757ea7822548",
+  "checkpoint_files_sha256": {
+    ".gitattributes": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+    "README.md": "a20b9db396342b7c37a07125c619266289831ac9fa7b3c759ff7239d2b4362a6",
+    "config.json": "3ed3ed80ee077d94ff22942130642bb60e255443ee65da676bc88ab1684a7efe",
+    "model.safetensors": "9a9f6413e42c0f332fccbce9a0dc796af2790f82cf002f791cdbf7e01e1afca8",
+    "policy_postprocessor.json": "3b51f092c70c710ce0213ee1b63bf51b4878ec67828dd2d67daf9ef51081a41a",
+    "policy_postprocessor_step_0_unnormalizer_processor.safetensors": "b0cdde6e8a6f49a8e19eefb376728e47c09d3b3cc20ce3a97c45619fe7a732d9",
+    "policy_preprocessor.json": "7beef33479fc22c9a45670154b3c7b909fb6d51dac3cd6db6f23376638b4ac11",
+    "policy_preprocessor_step_5_normalizer_processor.safetensors": "b0cdde6e8a6f49a8e19eefb376728e47c09d3b3cc20ce3a97c45619fe7a732d9",
+    "train_config.json": "88a2c5529157b24a1b3c870e7652311d2aaef2fc0126c9cdb179dd7d879a33b5"
+  },
+  "lerobot_version": "0.6.1",
+  "lerobot_source_sha256": {
+    "policies/smolvla/modeling_smolvla.py": "37b1d56f37510732a087cf5c32c05cd15d6234201a3f002f108ec4c53438cc7d",
+    "policies/smolvla/smolvlm_with_expert.py": "996d3b0c713c0ed42b383aa2cf89b2e6f9868e337747c480a64adaecdc1073cf",
+    "policies/smolvla/processor_smolvla.py": "b28e31c7b97c564edc6ad1aabe451fb59931b406ff7a6ed1fdff9d1af365d7ec",
+    "policies/common/flow_matching.py": "cddf14a9114b82c74de52ca30367acc5e0726a3c005b29bcf4eea2c1b126ce59",
+    "processor/env_processor.py": "41cf74048b233652b2b03d38c79b30d6f1d341592d553a5625f971de555f3a3a",
+    "envs/libero.py": "97c984f12331527626812ec19967ef399e545535b3571becf044db2417ae9d71",
+    "envs/utils.py": "4a37ce5d9ac70a22f88e63c02b84ef3e30be72725e52fe6a03ec7e3407c143e7",
+    "scripts/lerobot_eval.py": "fddec10c709401dd863814091d525fcd54d41cc6ccf51f7ef8300459cf69b873"
+  },
+  "torch_version": "2.11.0+cu130",
+  "transformers_version": "5.5.4",
+  "numpy_version": "2.2.6",
+  "device": "NVIDIA RTX 6000 Ada Generation",
+  "execute_steps": 10,
+  "num_flow_steps": 10,
+  "checkpoint_revision": "a24f1f380461b665158d52acd140152c79e8b36d"
+}

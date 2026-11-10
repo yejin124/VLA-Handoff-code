@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/NVIDIA/Isaac-GR00T",
+  "commit": "376ba890cff8c9de64d71d982772a9c36185fdd7",
+  "patch_required": false,
+  "scope": "Fresh replication using the unmodified official source. Original recorded runs used a local revision with disabled extensions; bitwise archival equivalence has not been established."
+}

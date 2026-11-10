@@ -1,0 +1,16 @@
+VLA-Handoff
+Copyright 2026 Electronics and Telecommunications Research Institute (ETRI)
+
+Original collection and analysis code is licensed under Apache-2.0 (LICENSE).
+The conceptual schematic docs/assets/fig1_pipeline.svg illustrates this study;
+its authors retain copyright. No IEEE template or journal manuscript is included.
+
+assets/occluder contains ten fixed LIBERO simulator frames used as input
+textures for the occluder perturbation. These are experimental inputs, not
+experimental performance results. LIBERO and its third-party visual assets
+retain their original notices and licenses. See docs/THIRD_PARTY.md.
+
+GR00T, MolmoAct2, OpenPI, SmolVLA, tau-0-VLA, LIBERO, and SimplerEnv are
+external dependencies under their respective upstream licenses. Checkpoints,
+training datasets, simulator assets other than the fixed textures, raw episode
+records, and numerical experimental results are not distributed in this package.

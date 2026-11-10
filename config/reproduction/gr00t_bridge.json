@@ -1,0 +1,12 @@
+{
+  "model": "GR00T-N1.7-SimplerEnv-Bridge",
+  "checkpoint_id": "c5d64c8ff2610d60defe8d80c42f6b14a1cf215476cea46f3261ed63abd417fd",
+  "checkpoint_sha256": "c5d64c8ff2610d60defe8d80c42f6b14a1cf215476cea46f3261ed63abd417fd",
+  "python": "3.12.13",
+  "torch": "2.9.0+cu128",
+  "transformers": "4.57.3",
+  "device": "NVIDIA A100 80GB PCIe",
+  "action_horizon": 4,
+  "checkpoint_revision": "940134b3c2948ccfdf8e7393f2d2ca869dc42833",
+  "replication_source": "gr00t_source.json"
+}

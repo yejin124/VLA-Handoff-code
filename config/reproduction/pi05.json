@@ -1,0 +1,21 @@
+{
+  "model": "pi0.5-LIBERO",
+  "checkpoint_id": "sha256:f3e6bbe5ad1b7a1ab4e7e5b806e5845b69cf700fa50b6d4a874fe61e1d5a25bd",
+  "checkpoint_sha256": "f3e6bbe5ad1b7a1ab4e7e5b806e5845b69cf700fa50b6d4a874fe61e1d5a25bd",
+  "checkpoint_assets_sha256": {
+    "assets/physical-intelligence/libero/norm_stats.json": "b3a44bb2810436fb62917decaea58bd4d9110255df527dea21e8fd40c960bd84"
+  },
+  "openpi_commit": "215abfb217dbac7d5f1273282331b9b1866c0479",
+  "openpi_source_sha256": {
+    "models_pytorch/pi0_pytorch.py": "dcd7b6f508808ce4b7170a1720a4c62c6da04edae3652d16c94a469dca924e16",
+    "models_pytorch/gemma_pytorch.py": "225092e06509da0ae37bb9dca55c00d2804255bb1496f7c8700304b4c52a95eb",
+    "policies/policy.py": "a2ac5236e23b11d0f5a840d4a8fef148d89dba921d5452ec5dfcd5a6ffa46f20",
+    "policies/policy_config.py": "aaf42ab04a33b6c91d2447926211646c33ebd8ebfa427f026d7b6c4f7c45ec52",
+    "policies/libero_policy.py": "d8679d99facc3fef48da07406081b20709ed872fcefdf7de67ede99422d623fa",
+    "transforms.py": "a1b94e9e72849a18834778f229c6bb389a495eb7fbe0aa800edea728b9424ff4",
+    "training/config.py": "c34231f888dba5dc981d808765b3d98775ab845b04313bf53fcecd567c520b0d"
+  },
+  "torch_version": "2.7.1+cu126",
+  "numpy_version": "1.26.4",
+  "action_horizon": 10
+}

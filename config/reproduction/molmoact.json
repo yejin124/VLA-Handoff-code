@@ -1,0 +1,107 @@
+{
+  "model": "MolmoAct2-LIBERO",
+  "checkpoint_id": "0e5ed0581cfb294768cb2d217021420551cad539956fad47b2c112720534ef49",
+  "python": "3.11.15",
+  "torch": "2.5.1+cu124",
+  "transformers": "5.3.0",
+  "numpy": "2.4.6",
+  "cuda": "12.4",
+  "device": "NVIDIA A100 80GB PCIe",
+  "checkpoint_files": [
+    {
+      "path": "chat_template.jinja",
+      "size": 3169,
+      "sha256": "ec66862fda57dc1aef90a21b2a0f64c18a280e2483206449bd251a73b8993101"
+    },
+    {
+      "path": "config.json",
+      "size": 4271,
+      "sha256": "2e521b21ac0a74eb124e20242704957177bf32a7c4296c01d7180b74994c40b4"
+    },
+    {
+      "path": "configuration_molmoact2.py",
+      "size": 20708,
+      "sha256": "ccc1b24db7ab42b30705414b14de9601b1d82fba6f6d85393b0e9cbe1052fac4"
+    },
+    {
+      "path": "generation_config.json",
+      "size": 116,
+      "sha256": "52ed940eef55d9a7e41adc8cac3408b01e26727ef828309c962f0ae5890cd281"
+    },
+    {
+      "path": "image_processing_molmoact2.py",
+      "size": 22359,
+      "sha256": "bb623a013e7f897ffb938990bd02374b61dabcabd87f9f19d59111ec88ecf675"
+    },
+    {
+      "path": "inference.py",
+      "size": 25938,
+      "sha256": "14a328aa9c8094fe5bf6d99aa98d49d0337485ff48f828cc1944bb66318cc67d"
+    },
+    {
+      "path": "model-00001-of-00005.safetensors",
+      "size": 4919324120,
+      "sha256": "5aa56113a3c1c95f0c03b90bada5b7ac2babf59c752a3d6201b8362a530c6809"
+    },
+    {
+      "path": "model-00002-of-00005.safetensors",
+      "size": 4844690992,
+      "sha256": "1fd95aec9ad144d3f4eac42db88a000321e016beeae606ecfcb84fcbdb13ecf4"
+    },
+    {
+      "path": "model-00003-of-00005.safetensors",
+      "size": 4844691024,
+      "sha256": "e6c455434915e74a8d750bedd0fc4c23b5a8ce37954aaff9c3e3f22085a26890"
+    },
+    {
+      "path": "model-00004-of-00005.safetensors",
+      "size": 4877619536,
+      "sha256": "4e5bcf5bad81573153d6deaa3d25c3e53dc697658488b1cdbab4c8a3dffba1b6"
+    },
+    {
+      "path": "model-00005-of-00005.safetensors",
+      "size": 2282630240,
+      "sha256": "76140ad00c225f95b80eb6b6a5fea2f985e4fdde3356a3c67c93d87d083d4ee2"
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "size": 131529,
+      "sha256": "273799bed0cbdc2c4a7a524c294652a0538c482e5e1148cf403951e836722c06"
+    },
+    {
+      "path": "modeling_molmoact2.py",
+      "size": 190994,
+      "sha256": "3e0090b8cc045d59911c0a579815ebd17ce0423f9fdd03be887412df5c7b8b49"
+    },
+    {
+      "path": "norm_stats.json",
+      "size": 5767,
+      "sha256": "de7de428abfd1af0aff0e97ff499a4a27012106b3982d22e8b8d029de312db80"
+    },
+    {
+      "path": "processing_molmoact2.py",
+      "size": 17254,
+      "sha256": "61ec88c04cf70844dc98ab518d332911ec32cf5f24f052b7413ddd5d61483109"
+    },
+    {
+      "path": "processor_config.json",
+      "size": 1853,
+      "sha256": "bd5ad3ddc456b7534005e075a5c3cb0644da5e4b1aa77f1d74268a9e4c7f071a"
+    },
+    {
+      "path": "tokenizer.json",
+      "size": 11983605,
+      "sha256": "d5395aefc9b1b7f0385d8c86a2f1775e5af81bdfbf9f2d97827ea37921d9f862"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "size": 782,
+      "sha256": "0ffb85ef66d5b354f53a341ff01edc5137c324981bf37928b86bcdee2b265415"
+    },
+    {
+      "path": "video_processing_molmoact2.py",
+      "size": 37191,
+      "sha256": "8da721aa638da65aaa35e458920037c16b81dca344a623bb08db2b73f9ce9992"
+    }
+  ]
+}

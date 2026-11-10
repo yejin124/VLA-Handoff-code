@@ -1,0 +1,42 @@
+{
+  "model": "tau0-VLA-LIBERO/tau-0-vla-libero",
+  "checkpoint_id": "sha256:e03870720cbddbd0f3be44ee929a5d23efb9bf9532f0ac1c1bf676224aacc8ec",
+  "checkpoint_sha256": "e03870720cbddbd0f3be44ee929a5d23efb9bf9532f0ac1c1bf676224aacc8ec",
+  "checkpoint_files_sha256": {
+    "model.safetensors": "e03870720cbddbd0f3be44ee929a5d23efb9bf9532f0ac1c1bf676224aacc8ec",
+    "config.json": "3e9b1007770f85978b15c0a8219b8199ba4f6ddf4577b27aacbe4d0a56776fa3",
+    "run_spec.json": "72ae2d7c8e5bec7a7ace9ed6e0fb19a701bd6e8ad137c09ac119f4ab1e24954d",
+    "policy_manifest.json": "0f69f02865f9526f8aaf3c62b5d6efb9676a176ece62701c593a247aab813f27",
+    "processor_config.json": "f179e50e10e3f4e9a63fb963025d4e6279789096f4f4a9a1c3b040b96b9baed1",
+    "tokenizer.json": "4d87abc604b4b3d28ea7ee6a7e85969bfde52de7c4d8bf4d271176a57bf0fe46",
+    "tokenizer_config.json": "492c152e22ea041d1a958e8c346c113021bc8374f4d0d013ba063ca685eec1fa",
+    "chat_template.jinja": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80",
+    "finch_data_spec/libero-eef-robot-prompt-ft/components.json": "d999dacbd897edbfd0c2555f2bb30113426df92500b621f29dc8f1c4df3026cf",
+    "finch_data_spec/libero-eef-robot-prompt-ft/field_descriptions.json": "8323dca93a5ebea757c5a84daf37be1b9263c7e715bef2d4067e70da07f3b257",
+    "finch_data_spec/libero-eef-robot-prompt-ft/norm_stats.json": "c89803c38a4cbe596e3eead37f8c2ea0a2d40c2a4400dc4f21c0ee0dc470144d",
+    "finch_data_spec/libero-eef-robot-prompt-ft/spec.json": "6a515484531844a5e607c71298c53b654dabeac5aae8916f686020f758ea8c2c"
+  },
+  "tau0_source": {
+    "commit": "d804047f7b2d61c45077daada3183703aeed8cf5",
+    "files_sha256": {
+      "deploy/libero/main.py": "dff9ed642cf80deecfeccf95a96a8c5598f61c6fb24deec26a4198612e2bf493",
+      "deploy/libero_server.py": "72560d13ac85a6b61bd1e9b055e7aa1a9ecd41318460385b2cac5cd70e98ce45",
+      "deploy/policy.py": "8d36d2ad212ed88b55156e03afcae4fd7ea47c55a0ea4024dbd17fbe19bb30c3",
+      "deploy/warmup.py": "9ae7eb2e8de6f4dc164919d7f8f73d5d706f41b92990fec51e9440ac90c5fdba",
+      "deploy/_bootstrap.py": "dd64425cedf849255445630efd39a049c3be56067dad121cb9b007d4729c0fd8",
+      "src/tau0_vla/adapters/libero/deploy_io.py": "3469385022a965112b248455ec9a06a9bac9359b81de7cea5493beece2517990",
+      "src/tau0_vla/adapters/libero/layout.py": "27a9e247f38c96108940e0054df24485445483fdef5d6e7690f223ed18871d39",
+      "src/tau0_vla/data/data_spec.py": "243adbad66370a14e46f26ee9f50cd53b1bc4a8f49d03c4e2e1e6452651855f3",
+      "src/tau0_vla/data/pipeline.py": "1e75d5bf0494a5e31f4309cfd0a78a2740251f172ef03453821aeb62f04fb004",
+      "src/tau0_vla/models/vision_language_action_models/tau0_vla/modeling_tau_vla.py": "dc85a037d5f094398a3cada05a68facbea17bb5f336784876c01b82625dc09eb",
+      "src/tau0_vla/models/vision_language_action_models/tau0_vla/qwen35vl_in_vla.py": "74de738560376d110ff9d503ed98d3c8a962a04c0dc6b5895beca8bf167a6156"
+    }
+  },
+  "python": "3.11.15",
+  "torch": "2.7.1+cu128",
+  "transformers": "5.5.4",
+  "numpy": "2.2.6",
+  "cuda": "12.8",
+  "device": "NVIDIA RTX 6000 Ada Generation",
+  "action_horizon": 8
+}
