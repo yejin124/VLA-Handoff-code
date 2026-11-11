@@ -4,7 +4,9 @@ Code for *Outcome Uncertainty in Dual-System VLAs: Comparing Handoff Readouts an
 
 ![Handoff readouts and sampled-action spread](docs/assets/fig1_pipeline.svg)
 
-We compare outcome uncertainty read from the representation passed between a vision-language model and its action expert with the spread of sampled actions. Across five frozen policies on LIBERO and SimplerEnv-Bridge, handoff readouts outperform action spread in several settings, while other settings are similar. The direct intervention fails its positive control, so the cause of the gap remains unresolved.
+We analyze how uncertainty relates across the two components of a dual-system VLA: outcome uncertainty recovered from the handoff representation and action uncertainty measured by sampled-action spread. The analysis separates uncertainty availability, accessibility along the conditioning path, and expression in actions. Both signals are measured at the same query of a frozen policy, with controls for scene information, readout supervision, and action sampling.
+
+Across five policies on LIBERO and SimplerEnv-Bridge, the handoff readout exceeds action spread in several settings; other comparisons do not reach statistical significance. Measurements before and after GR00T's interface detect no average loss in readout accessibility. The direct intervention fails its positive control, so the cause of the gap remains unresolved.
 
 The repository contains collection and analysis code, configuration, and fixed occluder inputs. Download model weights and simulators separately. Collect records locally before running analyses; saved experiment results are not required. Fresh runs may differ from the original trajectories.
 
