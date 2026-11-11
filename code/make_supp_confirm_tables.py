@@ -1,5 +1,5 @@
-"""Supplementary Tables S3 (all confirmatory cells), S4 (increment beyond a DINOv2 embedding) and S8 (further policies)
-from the frozen confirmatory and robustness results (data/confirmatory/).
+"""Detailed GR00T, image-control and additional-policy tables used by the compact supplement,
+from confirmatory and robustness results (data/confirmatory/).
 
 Usage: python code/make_supp_confirm_tables.py data/confirmatory paper/tables
 """

@@ -9,7 +9,7 @@ task. Cells are pooled over suite-task clusters (policy mean), as in the paper's
 """
 import argparse
 import json
-from math import comb
+from math import comb, isfinite
 from pathlib import Path
 
 import numpy as np
@@ -57,6 +57,49 @@ def source_key(value):
         if parts[index:index + len(marker)] == marker:
             return "/".join(parts[index + len(marker):])
     raise ValueError(f"Unrecognized source identity: {value}")
+
+
+def validate_coverage(suite: str, policy: str) -> dict[str, int]:
+    """Require a paired outcome or explicit replay exclusion for every active prefix."""
+    if suite not in ("spatial", "object") or policy not in POLICIES:
+        raise ValueError("Unknown restoration suite or policy")
+    expected = set()
+    for path in (DATA / "realistic" / f"{suite}_main" / policy).glob("shard*/t*_occluder/summary.json"):
+        summary = json.loads(path.read_text())
+        if summary.get("complete") is not True:
+            raise ValueError(f"Incomplete restoration source: {path}")
+        if summary["steps"] > 80:
+            expected.add(source_key(path.parent))
+    if not expected:
+        raise ValueError(f"No active restoration sources for {suite}|{policy}")
+    seen, paired, excluded = set(), 0, 0
+    for path in (DATA / "exp_20261029" / suite / policy).glob("*.json"):
+        record = json.loads(path.read_text())
+        key = source_key(record["source"])
+        if key in seen:
+            raise ValueError(f"Duplicate restoration record: {key}")
+        if key not in expected or record.get("decision_step") != 80:
+            raise ValueError(f"Unexpected restoration source or decision step: {key}")
+        seen.add(key)
+        branches = record.get("branches", {})
+        mismatch = record.get("replay_mismatch")
+        if mismatch is not None:
+            error = mismatch.get("max_state_error")
+            if (type(error) not in (int, float) or not isfinite(error) or error <= 1e-5
+                    or set(branches) == {"continue", "restore"}):
+                raise ValueError(f"Invalid replay exclusion: {key}")
+            excluded += 1
+            continue
+        if (set(branches) != {"continue", "restore"}
+                or any(type(branches[b].get("success")) is not bool for b in branches)):
+            raise ValueError(f"Missing paired outcomes: {key}")
+        error = record.get("replay_max_state_error")
+        if type(error) not in (int, float) or not isfinite(error) or not 0 <= error <= 1e-5:
+            raise ValueError(f"Invalid retained replay error: {key}")
+        paired += 1
+    if expected != seen:
+        raise ValueError(f"Missing restoration records for {len(expected - seen)} active prefixes")
+    return {"active": len(expected), "paired": paired, "excluded": excluded}
 
 
 def load_cell(suite, policy):
@@ -152,11 +195,18 @@ def main():
     ap.add_argument("--suites", default="spatial,object")
     ap.add_argument("--output", type=Path, default=DATA / "exp_20261029/view_restore_analysis.json")
     ap.add_argument("--no-table", action="store_true", help="Write only the selected JSON output")
+    ap.add_argument("--require-accounted", action="store_true",
+                    help="Require every active prefix to have paired outcomes or an explicit replay mismatch")
     a = ap.parse_args()
     cells, clusters = {}, {m: {} for m in METHODS}
     for suite in a.suites.split(","):
         for policy in POLICIES:
+            coverage = validate_coverage(suite, policy) if a.require_accounted else None
             rows, active = load_cell(suite, policy)
+            if coverage is not None:
+                if active != coverage["active"] or len(rows) != coverage["paired"]:
+                    raise ValueError(f"Restoration predictions do not cover all retained prefixes: {suite}|{policy}")
+                print(f"{suite}|{policy} replay coverage: {coverage}")
             if not rows:
                 continue
             cells[f"{suite}|{policy}"] = res = summarize(rows)

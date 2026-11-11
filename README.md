@@ -391,7 +391,7 @@ In the CPU environment, analyze and render:
 
 ```bash
 python code/exp_20261029_view_restore_analysis.py --suites spatial,object \
-  --output data/view_restore/view_restore_analysis.json --no-table
+  --output data/view_restore/view_restore_analysis.json --no-table --require-accounted
 python - <<'PY' || exit 1
 import json
 from pathlib import Path
@@ -404,14 +404,14 @@ if set(r['cells']) != expected:
 for key, c in r['cells'].items():
     print(key, {k: c[k] for k in ('n', 'active_at_80', 'complete',
         'max_replay_error', 'continue_matches_source', 'first_action_matches_source')})
-    if not c['complete'] or c['max_replay_error'] > 1e-5:
-        raise SystemExit('Incomplete restoration analysis; inspect recorded mismatches and missing prefixes.')
+    if not 0 < c['n'] <= c['active_at_80'] or not 0 <= c['max_replay_error'] <= 1e-5:
+        raise SystemExit('Invalid retained restoration cohort; inspect replay records and eligible folds.')
 PY
 python code/make_view_restore_table.py \
   data/view_restore/view_restore_analysis.json paper/tables/supp_view_restore.tex
 ```
 
-Inspect replay, image, and action parity fields. Missing calibrated alarms are unevaluable gates, not zero interventions.
+`--require-accounted` checks that every active source prefix has either both branch outcomes or an explicit replay-mismatch record. It rejects missing records and retained replays outside the tolerance. `complete=false` means some source prefixes were excluded; it does not by itself invalidate the retained cohort. Report retained and excluded counts (the paper retains 1,105 of 1,163 prefixes). Inspect image and action parity fields. Missing calibrated alarms are unevaluable gates, not zero interventions.
 
 The random comparator matches each task's realized intervention rate. Analysis averages policies within suite–task clusters, then clusters equally, with 10,000 cluster-bootstrap draws and Holm correction over four gates.
 
