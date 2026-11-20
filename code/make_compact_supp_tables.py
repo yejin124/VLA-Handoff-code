@@ -97,11 +97,11 @@ def render(source: Path, destination: Path) -> None:
             if last is not None:
                 body.append(r'\midrule')
             desc = 'primary landmark; Holm-adjusted' if r[2] == '80' else 'secondary landmark; unadjusted'
-            body.append(r'\multicolumn{6}{l}{\textbf{Step ' + r[2] + '} (' + desc + r' $p$)}\\')
+            body.append(r'\multicolumn{7}{l}{\textbf{Step ' + r[2] + '} (' + desc + r' $p$)}\\')
             last = r[2]
-        body.append([r[0], r[1], *r[7:11]])
-    output['supp_policy_summary.tex'] = table('llcccc',
-        ['Policy', 'Suite', r'$\Delta_{\rm handoff}$ [95\% CI]', '$p$',
+        body.append([r[0], r[1], r[3], *r[7:11]])
+    output['supp_policy_summary.tex'] = table('llccccc',
+        ['Policy', 'Suite', r'$N$ (fail)', r'$\Delta_{\rm handoff}$ [95\% CI]', '$p$',
          r'$\Delta_{\rm gap}$ [95\% CI]', '$p$'], body)
 
     requery = [r for r in rows(source / 'supp_requery.tex', 10) if r[2] == '80']
