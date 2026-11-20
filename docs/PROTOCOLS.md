@@ -16,6 +16,8 @@ The supervised action-spread features S concatenate mean log standard deviation 
 
 Eligibility rules in the loaders are fixed: report class counts and an ineligible status when support is insufficient. Do not change the rules to obtain a favorable estimate. Original LIBERO within-condition analyses require a failure prevalence between 10% and 80% and at least four tasks with both outcomes at the landmark.
 
+Descriptive tables report the median and order-statistic interquartile range across evaluable tasks. After sorting the task values, the lower and upper limits use zero-based indices `n // 4` and `(3 * n) // 4`, without interpolation. These are the third- and eighth-ranked values for ten tasks, and the third- and seventh-ranked values for the eight-task cell in Supplementary Table S4. These descriptive ranges are distinct from the bootstrap confidence intervals below.
+
 Confirmatory inference uses 2,000 full-refit bootstrap attempts with seed `20261106`, resampling scene or initialization IDs within each observed task. Keep all replicas and collection sources for each selected scene together. Refit preprocessing and readouts in each attempt. Invalid class-support draws are omitted jointly for paired comparisons and counted; require at least 100 valid draws for intervals. Software and convergence errors must be fixed, not excluded as invalid draws. Intervals are conditional on the observed tasks.
 
 One-sided bootstrap p-values are `(1 + count(delta <= 0)) / (1 + valid_draws)`. Apply the analysis module's declared Holm families, including ineligible comparisons conservatively with p=1. Percentile intervals are individual 95% intervals. Keep secondary cells and per-task effects; do not select a favorable landmark, seed, or condition after analysis.
