@@ -113,30 +113,54 @@ def load_cell(suite, policy):
             recs[key] = r
     a = json.loads((DATA / "analysis" / f"realistic_{suite}_occluder_{policy}.json").read_text())
     lm = next(x for x in a["landmarks"] if x["landmark"] == 80)
-    rows = []
+    # Outcomes exist even when a readout fold or its calibration threshold does not.
+    predictions = {}
     for fold in lm["folds"]:
         if "methods" not in fold:
             continue
-        for i, pred in enumerate(fold["methods"]["handoff"]["predictions"]):
-            key = source_key(pred["id"])
-            if key not in recs:
-                continue
-            r = recs[key]
-            row = {"task": fold["test_task"], "source_failure": pred["failure"],
-                   "cont": int(r["branches"]["continue"]["success"]), "rest": int(r["branches"]["restore"]["success"]),
-                   "replay_error": r["replay_max_state_error"],
-                   "image_match": r["branches"]["continue"].get("first_image_matches_source"),
-                   "action_match": r["branches"]["continue"].get("first_actions_match_source")}
-            for m in METHODS:
-                p = fold["methods"][m]["predictions"][i]
-                assert p["id"] == pred["id"]
-                row[m] = int(p["alarm"])
-            rows.append(row)
+        for method in METHODS:
+            for pred in fold["methods"][method]["predictions"]:
+                key = source_key(pred["id"])
+                identity = (key, method)
+                if identity in predictions:
+                    raise ValueError(f"Duplicate restoration prediction: {identity}")
+                alarm = pred["alarm"]
+                if alarm is not None and type(alarm) is not bool:
+                    raise ValueError(f"Invalid calibrated alarm: {identity}")
+                predictions[identity] = (fold["test_task"], pred["failure"], alarm)
+    rows = []
+    for key, r in recs.items():
+        row = {"task": r["task"], "source_failure": int(not r["source_success"]),
+               "cont": int(r["branches"]["continue"]["success"]),
+               "rest": int(r["branches"]["restore"]["success"]),
+               "replay_error": r["replay_max_state_error"],
+               "image_match": r["branches"]["continue"].get("first_image_matches_source"),
+               "action_match": r["branches"]["continue"].get("first_actions_match_source")}
+        for method in METHODS:
+            pred = predictions.get((key, method))
+            if pred is not None and pred[:2] != (row["task"], row["source_failure"]):
+                raise ValueError(f"Prediction and branch metadata disagree: {key}")
+            row[method] = None if pred is None or pred[2] is None else int(pred[2])
+        rows.append(row)
     return rows, lm["active_episodes"]
+
+
+def calibrated_rows(rows, method):
+    """Evaluate complete task gates; a missing threshold is not a zero alarm."""
+    retained = []
+    for task in sorted({r["task"] for r in rows}):
+        group = [r for r in rows if r["task"] == task]
+        available = [r[method] is not None for r in group]
+        if any(available) and not all(available):
+            raise ValueError(f"Partial task calibration for {method}, task {task}")
+        if all(available):
+            retained.extend(group)
+    return retained
 
 
 def task_effects(rows, method, exact=False):
     """{task: gate gain - rate-matched random gain} in success probability per active prefix."""
+    rows = calibrated_rows(rows, method)
     out = {}
     for t in sorted({r["task"] for r in rows}):
         rs = [r for r in rows if r["task"] == t]
@@ -156,18 +180,30 @@ def summarize(rows):
            "first_action_matches_source": int(sum(bool(r["action_match"]) for r in rows)),
            "max_replay_error": max(r["replay_error"] for r in rows), "gates": {}}
     for m in METHODS:
-        g = np.array([r[m] for r in rows])
-        fails = [r for r in rows if r["cont"] == 0]
-        res["gates"][m] = {
-            "rate": float(g.mean()), "alarm_count": int(g.sum()), "gate_success": int(sum(r["rest"] if r[m] else r["cont"] for r in rows)),
-            "random_expected_success": float(sum(r["cont"] for r in rows) + sum(
-                np.mean([r[m] for r in rows if r["task"] == t]) *
-                sum(r["rest"] - r["cont"] for r in rows if r["task"] == t)
-                for t in {r["task"] for r in rows})),
-            "alarmed_continue_failures": int(sum(r[m] for r in fails)), "continue_failures": len(fails),
-            "rescued_alarmed": int(sum(r[m] and r["rest"] for r in fails)),
-            "lost_alarmed": int(sum(r[m] and r["cont"] and not r["rest"] for r in rows)),
-            "task_effects": task_effects(rows, m)}
+        eligible = calibrated_rows(rows, m)
+        gate = {"status": "evaluated" if eligible else "unevaluable_no_calibrated_alarms",
+                "n_evaluable": len(eligible), "n_unevaluable": len(rows) - len(eligible),
+                "evaluable_tasks": sorted({r["task"] for r in eligible})}
+        if not eligible:
+            gate.update({key: None for key in (
+                "rate", "alarm_count", "gate_success", "random_expected_success",
+                "alarmed_continue_failures", "continue_failures", "rescued_alarmed", "lost_alarmed")})
+            gate["task_effects"] = {}
+        else:
+            g = np.array([r[m] for r in eligible])
+            fails = [r for r in eligible if r["cont"] == 0]
+            gate.update({
+                "rate": float(g.mean()), "alarm_count": int(g.sum()),
+                "gate_success": int(sum(r["rest"] if r[m] else r["cont"] for r in eligible)),
+                "random_expected_success": float(sum(r["cont"] for r in eligible) + sum(
+                    np.mean([r[m] for r in eligible if r["task"] == t]) *
+                    sum(r["rest"] - r["cont"] for r in eligible if r["task"] == t)
+                    for t in {r["task"] for r in eligible})),
+                "alarmed_continue_failures": int(sum(r[m] for r in fails)), "continue_failures": len(fails),
+                "rescued_alarmed": int(sum(r[m] and r["rest"] for r in fails)),
+                "lost_alarmed": int(sum(r[m] and r["cont"] and not r["rest"] for r in eligible)),
+                "task_effects": task_effects(eligible, m)})
+        res["gates"][m] = gate
     return res
 
 
@@ -182,8 +218,13 @@ def write_table(cells):
              "\\midrule"]
     for key, c in cells.items():
         suite, policy = key.split("|")
-        gate = lambda m: (f"{c['gates'][m]['gate_success']} vs.\\ {c['gates'][m]['random_expected_success']:.1f} "
-                          f"(${c['gates'][m]['rate']:.2f}$)")
+        def gate(method):
+            g = c['gates'][method]
+            if g['rate'] is None:
+                return '--'
+            count = f", n={g['n_evaluable']}" if g['n_evaluable'] != c['n'] else ''
+            return (f"{g['gate_success']} vs.\\ {g['random_expected_success']:.1f} "
+                    f"(${g['rate']:.2f}${count})")
         lines.append(f"{suite.capitalize()} & {NAMES[policy]} & {c['n']} & {c['continue_success']} & {c['restore_success']} & "
                      f"{c['rescued']}/{c['lost']} & {gate('handoff')} & {gate('native_spread')} \\\\")
     lines += ["\\bottomrule", "\\end{tabular}"]
@@ -229,7 +270,7 @@ def main():
     for k, c in cells.items():
         print(k, {x: c[x] for x in ("n", "active_at_80", "continue_success", "restore_success", "rescued", "lost",
                                     "continue_matches_source")},
-              {m: (round(g["rate"], 2), g["gate_success"], round(g["random_expected_success"], 1)) for m, g in c["gates"].items()})
+              {m: {k: g[k] for k in ("status", "n_evaluable", "rate", "gate_success")} for m, g in c["gates"].items()})
     print(json.dumps(pooled, indent=1))
 
 

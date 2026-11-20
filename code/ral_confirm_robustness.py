@@ -114,7 +114,8 @@ def run(variant, counts=None):
     kw = {k: v[k] for k in ('C', 'max_components') if k in v}
     out = {}
     for key, d in DATASETS.items():
-        r = evaluate(d, None if counts is None else counts[key], blocks=blocks, contrasts=contrasts, **kw)
+        r = (evaluate(d, None if counts is None else counts[key], blocks=blocks, contrasts=contrasts, **kw)
+             if d['eligible'] else {'status': 'ineligible'})
         out[key] = r if r['status'] != 'evaluated' else {
             'status': 'evaluated', 'contrasts': {c: r['contrasts'][c]['mean'] for c in contrasts},
             'methods': {m: r['methods'][m]['mean_auroc'] for m in blocks}}
@@ -133,23 +134,31 @@ def main():
     ap.add_argument('--cells', default=','.join(CELLS))
     a = ap.parse_args()
     root = Path(os.environ.get('RAL_RAW_ROOT', Path(__file__).resolve().parents[1]))
-    reader, datasets = Reader(), {}
+    reader, datasets, audits = Reader(), {}, {}
     for cell in a.cells.split(','):
-        datasets.update(rc.load(root, cell, reader)[0])
-    embed_images(datasets, a.output / 'dinov2_cls.npz')
+        loaded, audit = rc.load(root, cell, reader)
+        datasets.update(loaded)
+        audits[cell] = audit
+    eligible = {key: d for key, d in datasets.items() if d['eligible']}
+    if eligible:
+        embed_images(eligible, a.output / 'dinov2_cls.npz')
     init(datasets)
     point = {name: run(name) for name in VARIANTS}
-    with Pool(a.workers, initializer=init, initargs=(datasets,)) as pool:
-        draws = pool.map(attempt, range(rc.ATTEMPTS), chunksize=10)
+    draws = []
+    if eligible:
+        with Pool(a.workers, initializer=init, initargs=(datasets,)) as pool:
+            draws = pool.map(attempt, range(rc.ATTEMPTS), chunksize=10)
     res = {'plan': 'docs/PROTOCOLS.md', 'attempts': rc.ATTEMPTS, 'seed': rc.SEED,
-           'image_dim': int(next(iter(datasets.values()))['I'].shape[1]), 'variants': {}}
+           'image_dim': int(next(iter(eligible.values()))['I'].shape[1]) if eligible else None,
+           'cohorts': audits, 'variants': {}}
     for name in VARIANTS:
         res['variants'][name] = {}
         for (cell, step) in datasets:
             key = (cell, step)
             est = point[name][key]
             valid = [d[name][key] for d in draws if d[name][key]['status'] == 'evaluated']
-            entry = {'valid': len(valid), 'methods': est.get('methods'), 'contrasts': {}}
+            entry = {'status': est['status'], 'valid': len(valid),
+                     'methods': est.get('methods') or {}, 'contrasts': {}}
             for c, value in est.get('contrasts', {}).items():
                 arr = np.asarray([x['contrasts'][c] for x in valid])
                 entry['contrasts'][c] = {'estimate': value, 'ci95': np.quantile(arr, [.025, .975]).tolist(),

@@ -133,7 +133,7 @@ The examples collect 600 LIBERO and 864 Bridge episodes. `config/reproduction/co
 
 Main LIBERO cohorts use the preserved wrapped-axis-angle collector; follow-ups use the corrected official convention. `reproduce.py` selects the correct collector for each cohort. Do not exchange them.
 
-For parallel collection, run all `--shard` indices with one common `--nshards` on matching servers. Resume only with an unchanged configuration.
+For parallel collection, run all `--shard` indices with one common `--nshards` on matching servers. Resume only with an unchanged configuration. For the SmolVLA J64 follow-up, collect both Spatial and Object cohorts on the same GPU model and policy runtime: its replay validator requires matching server metadata across both suites and all shards.
 
 Keep shard metadata, `summary.json`, `queries.jsonl`, and query NPZ files: later analyses need the recorded actions, handoffs, states, images, and seeds.
 
@@ -405,7 +405,7 @@ python code/make_view_restore_table.py \
   data/view_restore/view_restore_analysis.json paper/tables/supp_view_restore.tex
 ```
 
-`--require-accounted` checks that every active source prefix has either both branch outcomes or an explicit replay-mismatch record. It rejects missing records and retained replays outside the tolerance. `complete=false` means some source prefixes were excluded; it does not by itself invalidate the retained cohort. Report retained and excluded counts (the paper retains 1,105 of 1,163 prefixes). Inspect image and action parity fields. Missing calibrated alarms are unevaluable gates, not zero interventions.
+`--require-accounted` checks that every active source prefix has either both branch outcomes or an explicit replay-mismatch record. It rejects missing records and retained replays outside the tolerance. `complete=false` means some source prefixes were excluded; it does not by itself invalidate the retained cohort. Report retained and excluded counts (the paper retains 1,105 of 1,163 prefixes). Inspect image and action parity fields. Missing calibrated alarms are unevaluable gates, not zero interventions. Outcome summaries retain every paired prefix; each gate reports its evaluable episode count and uses only tasks with complete calibration. A task with partially missing alarms is rejected.
 
 The random comparator matches each task's realized intervention rate. Analysis averages policies within suite–task clusters, then clusters equally, with 10,000 cluster-bootstrap draws and Holm correction over four gates.
 
