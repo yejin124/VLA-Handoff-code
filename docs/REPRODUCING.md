@@ -377,9 +377,11 @@ collect_restoration object gr00t GR00T 5662
 collect_restoration object molmoact MolmoAct2 5670
 ```
 
-Restoration collects both continue/restore branches for every source occluder episode active beyond step 80. Keep one common shard count; do not use `--replay-only` in the same output directory.
+Restoration collects both continue/restore branches for every source occluder episode active beyond step 80. Complete replay accounting is always checked by the analysis; `--require-accounted` remains accepted for compatibility. Keep one common shard count; do not use `--replay-only` in the same output directory.
 
 Branches replay through the chunk queried at step 80, then sample J=1 through the 280-step horizon using the source seeds. Simulator coordinate error above `1e-5` is a replay mismatch. J=8 source actions and J=1 continuations need not match despite equal seeds.
+
+Pooled gate summaries report the number of contributing policy-task cells and clusters with fewer than all three policies. Each retained suite-task cluster has equal weight, including a cluster with fewer contributing policies.
 
 In the CPU environment, analyze and render:
 

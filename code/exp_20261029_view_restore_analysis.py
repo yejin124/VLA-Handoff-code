@@ -47,6 +47,19 @@ def boot(x, n=10000):
     return [float(np.quantile(m, .025)), float(np.quantile(m, .975))]
 
 
+
+def pooled_summary(clusters):
+    """Equal-weight suite-task means, with the contributing policy counts visible."""
+    x = [float(np.mean(v)) for v in clusters.values()]
+    return {"clusters": len(x), "policy_cells": sum(len(v) for v in clusters.values()),
+            "clusters_partial": sum(len(v) < len(POLICIES) for v in clusters.values()),
+            "policies_expected_per_cluster": len(POLICIES),
+            "status": "evaluated" if x else "unevaluable_no_calibrated_alarms",
+            "mean": float(np.mean(x)) if x else None, "ci95": boot(x) if x else None,
+            "positive": int(sum(v > 0 for v in x)), "negative": int(sum(v < 0 for v in x)),
+            "sign_p": sign_test(x)}
+
+
 def source_key(value):
     """Join retained records without depending on the collector's checkout path."""
     parts = Path(value).parts
@@ -237,17 +250,16 @@ def main():
     ap.add_argument("--output", type=Path, default=DATA / "exp_20261029/view_restore_analysis.json")
     ap.add_argument("--no-table", action="store_true", help="Write only the selected JSON output")
     ap.add_argument("--require-accounted", action="store_true",
-                    help="Require every active prefix to have paired outcomes or an explicit replay mismatch")
+                    help="Compatibility flag: complete replay accounting is always required")
     a = ap.parse_args()
     cells, clusters = {}, {m: {} for m in METHODS}
     for suite in a.suites.split(","):
         for policy in POLICIES:
-            coverage = validate_coverage(suite, policy) if a.require_accounted else None
+            coverage = validate_coverage(suite, policy)
             rows, active = load_cell(suite, policy)
-            if coverage is not None:
-                if active != coverage["active"] or len(rows) != coverage["paired"]:
-                    raise ValueError(f"Restoration predictions do not cover all retained prefixes: {suite}|{policy}")
-                print(f"{suite}|{policy} replay coverage: {coverage}")
+            if active != coverage["active"] or len(rows) != coverage["paired"]:
+                raise ValueError(f"Restoration predictions do not cover all retained prefixes: {suite}|{policy}")
+            print(f"{suite}|{policy} replay coverage: {coverage}")
             if not rows:
                 continue
             cells[f"{suite}|{policy}"] = res = summarize(rows)
@@ -257,9 +269,7 @@ def main():
                     clusters[m].setdefault((suite, t), []).append(v)
     pooled = {}
     for m in METHODS:
-        x = [float(np.mean(v)) for v in clusters[m].values()]
-        pooled[m] = {"clusters": len(x), "mean": float(np.mean(x)) if x else None, "ci95": boot(x) if x else None,
-                     "positive": int(sum(v > 0 for v in x)), "negative": int(sum(v < 0 for v in x)), "sign_p": sign_test(x)}
+        pooled[m] = pooled_summary(clusters[m])
     for m, h in zip(METHODS, holm([pooled[m]["sign_p"] for m in METHODS])):
         pooled[m]["holm_p"] = h
     if not a.no_table:
